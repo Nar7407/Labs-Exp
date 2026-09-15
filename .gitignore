@@ -1,0 +1,21 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+.venv-1/
+venv/
+
+# IDE / editor settings
+.vscode/
+.idea/
+
+# Credentials and local key files - NEVER commit these
+freellmapi-keys.csv
+freellmapi-keys.env
+freellmapi-keys.json
+*.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/

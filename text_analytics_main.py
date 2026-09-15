@@ -8,6 +8,7 @@ def main():
     print(f"Is palindrome: {'yes' if is_palindrome(text) else 'no'}")
     print(f"Vowel count: {count_vowels(text)}")
 
+    # Word frequency table, printed in alphabetical order
     freq = word_frequency(text)
     print("\nWord frequency:")
     for word, count in sorted(freq.items()):

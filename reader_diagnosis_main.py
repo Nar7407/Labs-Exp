@@ -1,8 +1,11 @@
+"""Interactive front-end for the reader_diagnosis health-score module."""
+
 import reader_diagnosis
 from reader_diagnosis import calculate_health_score
 
 
 def read_reader(index):
+    """Prompt for one reader's data, re-prompting on invalid values."""
     while True:
         try:
             unit_id = input(f"Reader {index} ID: ")
@@ -16,13 +19,14 @@ def read_reader(index):
 
 
 def main():
+    """Collect readings, then print a per-unit report and fleet summary."""
     try:
         n = int(input("How many readers to analyze? "))
     except ValueError:
         print("Invalid count. Exiting.")
         return
 
-    readers = [read_reader(i) for i in range(1, n + 1)]
+    readers = [read_reader(i) for i in range(1, n + 1)]  # gather all units first
 
     print("\n===== READER DIAGNOSIS REPORT =====")
     for r in readers:

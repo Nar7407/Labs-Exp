@@ -1,3 +1,5 @@
+"""Menu-driven unit converter (km->miles, C->F, kg->pounds)."""
+
 import convert_utils
 
 MENU = """\n===== UNIT CONVERTER =====
@@ -9,6 +11,7 @@ Enter your choice: """
 
 
 def main():
+    """Run the interactive converter loop until the user chooses Exit."""
     while True:
         try:
             choice = int(input(MENU))
@@ -32,6 +35,7 @@ def main():
             else:
                 raise ValueError("choice must be between 1 and 4")
         except ValueError as e:
+            # Catches bad numeric input as well as out-of-range menu choices
             print(f"Invalid menu choice or input: {e}")
 
 
