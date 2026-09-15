@@ -1,18 +1,9 @@
-"""Additional Question 1: Line graph accepting glucose readings from the user.
-
-Prompts the user for the number of readings and the day + glucose value of
-each, then plots the glucose trend. Falls back to the default sample data
-when run non-interactively (e.g. piped input / no console).
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 def read_data():
-    """Read monitoring days and glucose readings from the user."""
     try:
         n = int(input("Enter the number of glucose readings: "))
         days, glucose = [], []
@@ -27,9 +18,7 @@ def read_data():
         return (np.array([0, 3, 6, 9, 12, 15, 18, 21, 24]),
                 np.array([110, 125, 138, 152, 168, 180, 160, 145, 130]))
 
-
 def plot_glucose(days, glucose):
-    """Plot the user-supplied glucose trend."""
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(days, glucose, color="blue", marker="o", linestyle="-",
             linewidth=2, label="Glucose Reading")
@@ -43,7 +32,6 @@ def plot_glucose(days, glucose):
     plt.savefig("q1_user_glucose_trend.png", dpi=150, bbox_inches="tight")
     plt.show()
     print("Saved q1_user_glucose_trend.png")
-
 
 if __name__ == "__main__":
     d, g = read_data()

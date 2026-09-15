@@ -1,29 +1,19 @@
-"""Experiment 9 - Task 4: Vector Field and Contour Visualization.
-
-Creates a mesh grid over [-3, 3] for both axes, computes the saddle function
-Z = X^2 - Y^2, plots it as a filled contour with a colorbar, and on a separate
-figure draws a quiver plot of the gradient of Z, i.e. (dZ/dX, dZ/dY) = (2X, -2Y),
-the direction of steepest ascent at each mesh point.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-# ---------------------------------------------------------------- mesh grid
-x = np.linspace(-3, 3, 20)   # 20 points per axis keeps quiver arrows readable
+x = np.linspace(-3, 3, 20)
 y = np.linspace(-3, 3, 20)
 X, Y = np.meshgrid(x, y)
 
-Z = X**2 - Y**2              # saddle function
+Z = X**2 - Y**2
 
-# ------------------------------------------------------- filled contour plot
 fig1, ax1 = plt.subplots(figsize=(8, 6.5))
 cf = ax1.contourf(X, Y, Z, levels=25, cmap="coolwarm")
 cbar = plt.colorbar(cf, ax=ax1)
 cbar.set_label("Z = X\u00b2 - Y\u00b2")
-ax1.contour(X, Y, Z, levels=10, colors="black", linewidths=0.4)  # contour lines on top
+ax1.contour(X, Y, Z, levels=10, colors="black", linewidths=0.4)
 ax1.set_title("Filled Contour of Saddle Function Z = X\u00b2 - Y\u00b2",
               fontsize=13, fontweight="bold")
 ax1.set_xlabel("X")
@@ -34,12 +24,11 @@ plt.savefig("saddle_contour.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved saddle_contour.png")
 
-# --------------------------------------- quiver plot of the gradient (2X,-2Y)
-U = 2 * X   # dZ/dX
-V = -2 * Y  # dZ/dY
+U = 2 * X
+V = -2 * Y
 
 fig2, ax2 = plt.subplots(figsize=(8, 6.5))
-ax2.quiver(X, Y, U, V, np.hypot(U, V), cmap="plasma")  # colour = gradient magnitude
+ax2.quiver(X, Y, U, V, np.hypot(U, V), cmap="plasma")
 cbar2 = plt.colorbar(ax2.collections[0], ax=ax2)
 cbar2.set_label("Gradient Magnitude |(2X, -2Y)|")
 ax2.set_title("Quiver Plot: Gradient (Steepest Ascent) of Z = X\u00b2 - Y\u00b2",

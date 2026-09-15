@@ -1,7 +1,3 @@
-"""Practice Task 3: Stacked area plot (plt.stackplot) showing three product
-categories' sales over 6 months.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -18,7 +14,6 @@ ax.stackplot(months, electronics, clothing, groceries,
              colors=["#66b3ff", "#ff9999", "#99ff99"], alpha=0.85,
              edgecolor="black", linewidth=0.5)
 
-# Totals per month printed on top of the stack
 totals = np.array(electronics) + np.array(clothing) + np.array(groceries)
 for i, total in enumerate(totals):
     ax.text(i, total + 8, str(total), ha="center", fontweight="bold",

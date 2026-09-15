@@ -1,13 +1,9 @@
-"""Practice Task 1: Plot two line series - two students' marks across 5 tests
-- on the same chart with different colours, markers and a legend.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-tests = np.arange(1, 6)  # Test 1..5
+tests = np.arange(1, 6)
 alice_marks = [78, 82, 91, 85, 88]
 bob_marks = [70, 75, 68, 80, 92]
 

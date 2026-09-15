@@ -1,5 +1,3 @@
-"""Practice Task 2: Rename columns and reset index after filtering"""
-
 import pandas as pd
 
 data = {

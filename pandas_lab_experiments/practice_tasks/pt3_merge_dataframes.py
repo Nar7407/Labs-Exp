@@ -1,5 +1,3 @@
-"""Practice Task 3: Merge two DataFrames using pd.merge()"""
-
 import pandas as pd
 
 print("=" * 70)

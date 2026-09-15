@@ -1,8 +1,3 @@
-"""Additional Question 11: A single subplot figure containing
-  - the glucose trend line graph, and
-  - the ward-wise glucose-abnormality heat map.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -21,7 +16,6 @@ abnormality = np.array([
 fig, axes = plt.subplots(1, 2, figsize=(15, 5.5))
 fig.suptitle("Patient Monitoring Dashboard", fontsize=15, fontweight="bold")
 
-# ---- Left: glucose trend ---------------------------------------------------
 axes[0].plot(days, glucose, color="blue", marker="o", linewidth=2,
              label="Glucose Reading")
 axes[0].axhline(THRESHOLD, color="red", linestyle="--",
@@ -40,7 +34,6 @@ axes[0].set_ylabel("Glucose Reading (mg/dL)")
 axes[0].grid(alpha=0.4)
 axes[0].legend(loc="lower right")
 
-# ---- Right: heat map -------------------------------------------------------
 heat = axes[1].imshow(abnormality, cmap="YlOrRd", aspect="auto")
 cbar = plt.colorbar(heat, ax=axes[1])
 cbar.set_label("Glucose-Abnormality Index")

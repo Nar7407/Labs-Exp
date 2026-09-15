@@ -1,5 +1,3 @@
-"""Pandas Laboratory - Task 1: Student Database Manager"""
-
 import pandas as pd
 import numpy as np
 

@@ -1,5 +1,3 @@
-"""Additional Question 10: Export processed DataFrame to CSV"""
-
 import pandas as pd
 import os
 

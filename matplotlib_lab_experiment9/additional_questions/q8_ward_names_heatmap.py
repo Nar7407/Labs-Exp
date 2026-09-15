@@ -1,7 +1,3 @@
-"""Additional Question 8: Heat map with ward names (Ward A, Ward B, ...)
-as the y-axis tick labels.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

@@ -1,8 +1,3 @@
-"""Additional Question 5: Calculate and display the average glucose reading.
-
-The average is drawn as a horizontal reference line and also printed.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

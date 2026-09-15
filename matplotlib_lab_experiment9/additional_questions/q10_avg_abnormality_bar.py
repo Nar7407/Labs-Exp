@@ -1,7 +1,3 @@
-"""Additional Question 10: Bar chart comparing the average abnormality index
-of each ward (average across each ward row's section values).
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

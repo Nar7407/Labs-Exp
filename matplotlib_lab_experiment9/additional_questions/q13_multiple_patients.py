@@ -1,11 +1,3 @@
-"""Additional Question 13: Generate the visualization for multiple patients
-and compare their glucose trends in a single figure.
-
-Each patient's trend is plotted with its own colour/marker; per-patient
-summary statistics (average, max, days above threshold) are printed and the
-averages are compared in a companion bar chart.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -26,7 +18,6 @@ styles = [
     {"color": "purple", "marker": "^"},
 ]
 
-# ------------------------------------------------ comparison line chart -----
 fig1, ax1 = plt.subplots(figsize=(10, 6))
 for (name, readings), style in zip(patients.items(), styles):
     values = np.array(readings)
@@ -49,7 +40,6 @@ plt.savefig("q13_multi_patient_comparison.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved q13_multi_patient_comparison.png")
 
-# --------------------------------------------- average-glucose bar chart ----
 names = list(patients.keys())
 averages = [np.array(v).mean() for v in patients.values()]
 

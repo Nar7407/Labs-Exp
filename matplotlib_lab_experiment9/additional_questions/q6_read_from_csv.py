@@ -1,9 +1,3 @@
-"""Additional Question 6: Read glucose data from a CSV file using Pandas.
-
-Loads day/glucose readings from glucose_readings.csv (next to this file)
-and visualizes the trend with Matplotlib.
-"""
-
 import os
 
 import matplotlib

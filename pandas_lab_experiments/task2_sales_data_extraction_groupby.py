@@ -1,9 +1,5 @@
-"""Experiment: sales-data extraction with boolean filtering, group-by
-aggregation and loc/iloc indexing using Pandas."""
-
 import pandas as pd
 
-# Sample sales records: product, region, quantity sold and unit price
 sales = pd.DataFrame({
     "Product": ["Laptop", "Mouse", "Keyboard", "Monitor", "Headphones",
                 "USB Cable", "Webcam", "Speaker", "Mouse Pad", "Charger",
@@ -23,13 +19,11 @@ print("Initial Sales DataFrame:")
 print(sales)
 print()
 
-# Derived column: revenue = quantity * unit price
 sales["Revenue"] = sales["Quantity"] * sales["Price"]
 print("DataFrame after adding Revenue column:")
 print(sales)
 print()
 
-# Boolean filtering with AND (&) and OR (|) conditions
 east_high_revenue = sales[(sales["Region"] == "East") & (sales["Revenue"] > 5000)]
 print("Records where Region == 'East' AND Revenue > 5000:")
 print(east_high_revenue)
@@ -40,7 +34,6 @@ print("Records where Revenue > 3000 OR Region == 'North':")
 print(high_value)
 print()
 
-# Group-by aggregation per region
 region_total = sales.groupby("Region")["Revenue"].sum()
 region_avg = sales.groupby("Region")["Revenue"].mean()
 
@@ -52,13 +45,11 @@ print("Average Revenue per Region:")
 print(region_avg)
 print()
 
-# Identify the top-performing region by total revenue
 top_region = region_total.idxmax()
 top_revenue = region_total.max()
 print(f"Top-performing region: {top_region} with total revenue of {top_revenue}")
 print()
 
-# loc is label-based (end index inclusive); iloc is position-based (exclusive)
 print("Using loc (label-based):")
 loc_result = sales.loc[0:4, ["Product", "Region", "Revenue"]]
 print(loc_result)

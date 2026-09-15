@@ -1,5 +1,3 @@
-"""Additional Question 8: Sort wards by average turnaround descending"""
-
 import os
 import pandas as pd
 

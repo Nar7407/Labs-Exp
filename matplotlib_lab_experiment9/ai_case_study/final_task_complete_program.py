@@ -1,31 +1,11 @@
-"""AI Case Study - Final Task: Complete Patient Glucose Monitoring Program.
-
-Complete program that combines all case-study tasks:
-  1. Stores glucose readings for a sample patient.
-  2. Creates a line graph of glucose variation across the monitoring period.
-  3. Adds a 140 mg/dL abnormality threshold line.
-  4. Identifies and annotates the maximum glucose reading.
-  5. Stores glucose-abnormality values for multiple ward sections.
-  6. Generates a heat map of ward-wise glucose abnormality.
-  7. Displays numerical values inside the heat-map cells.
-  8. Identifies the ward section with the highest abnormality value.
-  9. Adds suitable titles, axis labels, legends, grid and colour bar.
-
-Expected output: two visualizations -
-  glucose_trend.png       (glucose trend + threshold)
-  ward_abnormality_heatmap.png (ward-wise heat map)
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-THRESHOLD = 140  # mg/dL
-
+THRESHOLD = 140
 
 def classify(ai):
-    """Classify an abnormality index value."""
     if ai < 30:
         return "Low Abnormality"
     if ai < 50:
@@ -34,9 +14,7 @@ def classify(ai):
         return "High Abnormality"
     return "Severe Abnormality"
 
-
 def plot_glucose_trend(days, glucose):
-    """Visualizations 1: glucose trend line graph with threshold + annotation."""
     max_idx = np.argmax(glucose)
     max_value, max_day = glucose[max_idx], days[max_idx]
 
@@ -71,9 +49,7 @@ def plot_glucose_trend(days, glucose):
     abnormal_days = days[glucose > THRESHOLD]
     print(f"Abnormal days (> {THRESHOLD} mg/dL): {list(abnormal_days)}")
 
-
 def plot_ward_heatmap(abnormality):
-    """Visualization 2: ward-wise heat map with values + highest section."""
     rows, cols = abnormality.shape
 
     fig, ax = plt.subplots(figsize=(9, 6))
@@ -114,14 +90,12 @@ def plot_ward_heatmap(abnormality):
     plt.close(fig)
     print("Saved ward_abnormality_heatmap.png")
 
-
 def main():
-    # Step 1-4: patient glucose data and trend graph
+
     days = np.array([0, 3, 6, 9, 12, 15, 18, 21, 24])
     glucose = np.array([110, 125, 138, 152, 168, 180, 160, 145, 130])
     plot_glucose_trend(days, glucose)
 
-    # Step 5-8: ward abnormality data and heat map
     abnormality = np.array([
         [20, 35, 45, 60, 30],
         [25, 40, 55, 65, 35],
@@ -129,7 +103,6 @@ def main():
         [30, 45, 60, 75, 40],
     ])
     plot_ward_heatmap(abnormality)
-
 
 if __name__ == "__main__":
     main()

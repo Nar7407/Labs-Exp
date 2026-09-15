@@ -1,36 +1,25 @@
-# Basic mathematical operations used by main.py
-
-
 def power(base, exp):
-    """Return base raised to exp."""
     return base ** exp
 
-
 def factorial(n):
-    """Return n! recursively; raises ValueError for negative n."""
     if n < 0:
         raise ValueError("factorial is not defined for negative numbers")
     if n == 0:
-        return 1  # base case
+        return 1
     return n * factorial(n - 1)
 
-
 def gcd(a, b):
-    """Return the greatest common divisor using Euclid's algorithm."""
     if b == 0:
-        return a  # base case: b reached zero
+        return a
     return gcd(b, a % b)
 
-
 def is_prime(n):
-    """Return True if n is a prime number (trial division up to sqrt(n))."""
     if n < 2:
         return False
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
-            return False  # found a factor
+            return False
     return True
-
 
 if __name__ == "__main__":
     assert power(2, 10) == 1024

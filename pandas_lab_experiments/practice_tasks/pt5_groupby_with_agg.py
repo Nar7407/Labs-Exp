@@ -1,5 +1,3 @@
-"""Practice Task 5: Groupby with multiple aggregations using .agg()"""
-
 import pandas as pd
 
 print("=" * 70)

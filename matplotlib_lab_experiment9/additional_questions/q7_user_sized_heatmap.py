@@ -1,17 +1,9 @@
-"""Additional Question 7: Heat map that accepts the number of rows and
-columns from the user and generates a random abnormality matrix.
-
-Falls back to the default 4x5 sample data when run non-interactively.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 def read_dimensions():
-    """Ask the user for the heat-map size, with a non-interactive fallback."""
     try:
         rows = int(input("Enter number of ward rows: "))
         cols = int(input("Enter number of ward columns: "))
@@ -22,9 +14,7 @@ def read_dimensions():
         print("No valid input - using default 4 rows x 5 columns.")
         return 4, 5
 
-
 def plot_heatmap(abnormality):
-    """Plot the abnormality matrix as a heat map."""
     rows, cols = abnormality.shape
     fig, ax = plt.subplots(figsize=(9, 6))
     heat = ax.imshow(abnormality, cmap="YlOrRd", aspect="auto")
@@ -45,7 +35,6 @@ def plot_heatmap(abnormality):
     plt.savefig("q7_user_heatmap.png", dpi=150, bbox_inches="tight")
     plt.show()
     print("Saved q7_user_heatmap.png")
-
 
 if __name__ == "__main__":
     n_rows, n_cols = read_dimensions()

@@ -1,7 +1,3 @@
-"""Practice Task 2: Horizontal bar chart (plt.barh) comparing the population
-of 6 cities (population in millions, approximate metro figures).
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -10,7 +6,6 @@ import numpy as np
 cities = ["Tokyo", "Delhi", "Shanghai", "Sao Paulo", "Mumbai", "Cairo"]
 population_millions = [37.4, 32.9, 29.2, 22.6, 21.3, 21.8]
 
-# Sort so the largest population appears at the top
 order = np.argsort(population_millions)
 cities_sorted = [cities[i] for i in order]
 pop_sorted = [population_millions[i] for i in order]

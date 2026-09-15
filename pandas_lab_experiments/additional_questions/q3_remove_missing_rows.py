@@ -1,5 +1,3 @@
-"""Additional Question 3: Remove rows with missing analyte values"""
-
 import os
 import pandas as pd
 
@@ -34,7 +32,7 @@ print("=" * 70)
 discussion = f"""
 Effect of removing rows with missing values:
 
-1. DATA LOSS: 
+1. DATA LOSS:
    - {len(df) - len(df_cleaned)} out of {len(df)} rows removed ({((len(df) - len(df_cleaned))/len(df))*100:.1f}% loss)
    - This is significant for small datasets
 
@@ -49,9 +47,9 @@ Effect of removing rows with missing values:
    - May introduce bias if missing pattern is not random
    - Ward representation may become unbalanced
 
-4. ALTERNATIVE: 
+4. ALTERNATIVE:
    - For this dataset, imputation (fillna) preserves more information
-   - dropna() is better when data quality is critical and missingness 
+   - dropna() is better when data quality is critical and missingness
      indicates unreliable measurements
 """
 print(discussion)

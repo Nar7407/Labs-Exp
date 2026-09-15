@@ -2,9 +2,6 @@ import numpy as np
 
 np.random.seed(42)
 
-# ============================================================
-# TASK 1: Matrix Operations Calculator
-# ============================================================
 def task1_matrix_operations():
     print("=" * 60)
     print("TASK 1: Matrix Operations Calculator")
@@ -36,10 +33,6 @@ def task1_matrix_operations():
 
     print()
 
-
-# ============================================================
-# TASK 2: Boolean Masking and Conditional Replacement
-# ============================================================
 def task2_boolean_masking():
     print("=" * 60)
     print("TASK 2: Boolean Masking and Conditional Replacement")
@@ -64,10 +57,6 @@ def task2_boolean_masking():
 
     print()
 
-
-# ============================================================
-# TASK 3: Row and Column-wise Statistics on 2-D Array
-# ============================================================
 def task3_row_col_statistics():
     print("=" * 60)
     print("TASK 3: Row and Column-wise Statistics on 2-D Array")
@@ -95,10 +84,6 @@ def task3_row_col_statistics():
 
     print()
 
-
-# ============================================================
-# AI CASE STUDY: Abnormal-Glucose Detection
-# ============================================================
 def case_study_abnormal_glucose():
     print("=" * 60)
     print("AI CASE STUDY: Abnormal-Glucose Detection")
@@ -170,10 +155,6 @@ def case_study_abnormal_glucose():
 
     print()
 
-
-# ============================================================
-# ADDITIONAL PRACTICE TASKS
-# ============================================================
 def additional_task1_identity_matrix():
     print("=" * 60)
     print("Additional Task 1: 4x4 Identity Matrix")
@@ -193,7 +174,6 @@ def additional_task1_identity_matrix():
     print("Verification (I @ A == A):", np.allclose(I @ A, A))
     print()
 
-
 def additional_task2_normalize():
     print("=" * 60)
     print("Additional Task 2: Normalize 1-D Array to [0, 1]")
@@ -207,7 +187,6 @@ def additional_task2_normalize():
     print("Normalized Array:", normalized)
     print("Min:", normalized.min(), "Max:", normalized.max())
     print()
-
 
 def additional_task3_primes():
     print("=" * 60)
@@ -232,7 +211,6 @@ def additional_task3_primes():
     print("Prime Numbers:", primes)
     print()
 
-
 def additional_task4_stacking():
     print("=" * 60)
     print("Additional Task 4: Stack Arrays Vertically & Horizontally")
@@ -251,7 +229,6 @@ def additional_task4_stacking():
     print("Horizontal Stack (hstack):", hstacked)
     print()
 
-
 def additional_task5_cumulative():
     print("=" * 60)
     print("Additional Task 5: Cumulative Sum & Product")
@@ -263,10 +240,6 @@ def additional_task5_cumulative():
     print("Cumulative Product:", np.cumprod(arr))
     print()
 
-
-# ============================================================
-# POST-LAB CONCEPTUAL QUESTIONS (Answers)
-# ============================================================
 def post_lab_answers():
     print("=" * 60)
     print("POST-LAB CONCEPTUAL QUESTIONS - ANSWERS")
@@ -298,10 +271,6 @@ def post_lab_answers():
 
     print()
 
-
-# ============================================================
-# DEMONSTRATION: Loop vs Vectorized Performance
-# ============================================================
 def demo_loop_vs_vectorized():
     print("=" * 60)
     print("DEMO: Loop vs Vectorized Performance")
@@ -312,12 +281,10 @@ def demo_loop_vs_vectorized():
     n = 10_000_000
     arr = np.random.rand(n)
 
-    # Vectorized
     start = time.perf_counter()
     result_vec = arr * 2 + 1
     vec_time = time.perf_counter() - start
 
-    # Python loop
     start = time.perf_counter()
     result_loop = [x * 2 + 1 for x in arr]
     loop_time = time.perf_counter() - start
@@ -328,10 +295,6 @@ def demo_loop_vs_vectorized():
     print(f"Speedup: {loop_time/vec_time:.1f}x")
     print()
 
-
-# ============================================================
-# MAIN
-# ============================================================
 if __name__ == "__main__":
     task1_matrix_operations()
     task2_boolean_masking()

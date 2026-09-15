@@ -1,7 +1,3 @@
-"""Additional Question 9: Identify and display all ward sections with
-abnormality index AI >= 70 (severely abnormal sections).
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -16,7 +12,6 @@ abnormality = np.array([
 
 SEVERE_LIMIT = 70
 
-# ------------------------------------------------------------ console report
 print("=" * 55)
 print("SEVERELY ABNORMAL WARD SECTIONS (AI >= 70)")
 print("=" * 55)
@@ -31,7 +26,6 @@ if count == 0:
     print("No severely abnormal sections found.")
 print("=" * 55)
 
-# ------------------------------------------------- heat map with highlights
 fig, ax = plt.subplots(figsize=(9, 6))
 heat = ax.imshow(abnormality, cmap="YlOrRd", aspect="auto")
 plt.colorbar(heat, ax=ax, label="Glucose-Abnormality Index")

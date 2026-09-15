@@ -1,5 +1,3 @@
-"""Menu-driven scientific calculator built on sci_calc.py."""
-
 import sci_calc
 
 MENU = """\n===== SCIENTIFIC CALCULATOR =====
@@ -10,14 +8,10 @@ MENU = """\n===== SCIENTIFIC CALCULATOR =====
 5. Exit
 Enter your choice: """
 
-
 def get_int(prompt):
-    """Read an integer from the user."""
     return int(input(prompt))
 
-
 def main():
-    """Run the interactive calculator menu until the user chooses Exit."""
     while True:
         try:
             choice = int(input(MENU))
@@ -47,9 +41,8 @@ def main():
             else:
                 raise ValueError("choice must be between 1 and 5")
         except ValueError as e:
-            # Catches bad numeric input as well as out-of-range menu choices
-            print(f"Invalid menu choice or input: {e}")
 
+            print(f"Invalid menu choice or input: {e}")
 
 if __name__ == "__main__":
     main()

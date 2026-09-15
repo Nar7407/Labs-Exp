@@ -1,10 +1,3 @@
-"""Additional Question 12: Save the generated visualizations as image files
-using plt.savefig().
-
-Demonstrates saving both a line chart and a heat map at different dpi values,
-in both PNG and PDF formats, before showing them.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -19,7 +12,6 @@ abnormality = np.array([
     [30, 45, 60, 75, 40],
 ])
 
-# ---------------------- Visualization 1: line chart -> PNG, PDF and SVG -----
 fig1, ax1 = plt.subplots(figsize=(10, 6))
 ax1.plot(days, glucose, color="blue", marker="o", linewidth=2,
          label="Glucose Reading")
@@ -31,12 +23,11 @@ ax1.grid(alpha=0.4)
 ax1.legend()
 
 plt.savefig("q12_glucose_trend_150dpi.png", dpi=150, bbox_inches="tight")
-plt.savefig("q12_glucose_trend.pdf", bbox_inches="tight")   # vector format
-plt.savefig("q12_glucose_trend.svg", bbox_inches="tight")   # vector format
+plt.savefig("q12_glucose_trend.pdf", bbox_inches="tight")
+plt.savefig("q12_glucose_trend.svg", bbox_inches="tight")
 plt.close(fig1)
 print("Saved q12_glucose_trend_150dpi.png, q12_glucose_trend.pdf, q12_glucose_trend.svg")
 
-# ---------------------- Visualization 2: heat map -> PNG at 300 dpi ---------
 fig2, ax2 = plt.subplots(figsize=(9, 6))
 heat = ax2.imshow(abnormality, cmap="YlOrRd", aspect="auto")
 plt.colorbar(heat, ax=ax2, label="Glucose-Abnormality Index")

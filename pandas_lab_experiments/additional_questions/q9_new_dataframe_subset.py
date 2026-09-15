@@ -1,5 +1,3 @@
-"""Additional Question 9: Create new DataFrame with specific columns"""
-
 import os
 import pandas as pd
 

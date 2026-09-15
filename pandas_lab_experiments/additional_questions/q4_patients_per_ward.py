@@ -1,5 +1,3 @@
-"""Additional Question 4: Find patients per ward using groupby()"""
-
 import os
 import pandas as pd
 

@@ -1,5 +1,3 @@
-"""Additional Question 1: Median imputation for missing glucose values"""
-
 import os
 import pandas as pd
 

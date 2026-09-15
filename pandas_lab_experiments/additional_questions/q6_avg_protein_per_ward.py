@@ -1,5 +1,3 @@
-"""Additional Question 6: Average protein reading per ward"""
-
 import os
 import pandas as pd
 

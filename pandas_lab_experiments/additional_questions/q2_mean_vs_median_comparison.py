@@ -1,5 +1,3 @@
-"""Additional Question 2: Compare mean and median imputation"""
-
 import os
 import pandas as pd
 

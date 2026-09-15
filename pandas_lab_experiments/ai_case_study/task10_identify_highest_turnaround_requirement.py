@@ -1,5 +1,3 @@
-"""AI Case Study: Patient Test-Result Analysis using Pandas DataFrame - Task 10"""
-
 import os
 import pandas as pd
 

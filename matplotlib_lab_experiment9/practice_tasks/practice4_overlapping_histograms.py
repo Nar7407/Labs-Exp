@@ -1,15 +1,11 @@
-"""Practice Task 4: Histogram with two overlapping datasets using transparency
-(alpha) to compare their distributions visually.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
 np.random.seed(42)
-class_a = np.random.normal(65, 8, 200)   # Section A marks
-class_b = np.random.normal(72, 12, 200)  # Section B marks
+class_a = np.random.normal(65, 8, 200)
+class_b = np.random.normal(72, 12, 200)
 
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.hist(class_a, bins=15, color="steelblue", alpha=0.6, edgecolor="black",

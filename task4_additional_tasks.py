@@ -1,17 +1,6 @@
-"""
-Additional Tasks: Abnormal-Glucose Detection
-=============================================
-Tasks 1–7 extending the core glucose detection program.
-"""
-
 import numpy as np
 
-
-# ─────────────────────────────────────────────────────
-#  Task 1: User-Defined Glucose Readings
-# ─────────────────────────────────────────────────────
 def task_1_user_input():
-    """Accept glucose readings from the user and convert to NumPy array."""
     print("=" * 60)
     print("  TASK 1: User-Defined Glucose Readings")
     print("=" * 60)
@@ -31,12 +20,7 @@ def task_1_user_input():
     print(f"Abnormal Patients: {patient_ids[abnormal_flag]}")
     print(f"Abnormal Readings: {glucose[abnormal_flag]}")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 2: Fasting Status of Abnormal Patients
-# ─────────────────────────────────────────────────────
 def task_2_fasting_status():
-    """Display fasting status of abnormal-glucose patients using Boolean indexing."""
     print("\n" + "=" * 60)
     print("  TASK 2: Fasting Status of Abnormal Patients")
     print("=" * 60)
@@ -55,12 +39,7 @@ def task_2_fasting_status():
     for pid, status in zip(patient_ids[abnormal_flag], abnormal_fasting):
         print(f"  {pid}: {status}")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 3: User-Defined Threshold
-# ─────────────────────────────────────────────────────
 def task_3_user_threshold():
-    """Use a user-defined glucose threshold instead of a fixed value."""
     print("\n" + "=" * 60)
     print("  TASK 3: User-Defined Threshold")
     print("=" * 60)
@@ -79,12 +58,7 @@ def task_3_user_threshold():
     print(f"Abnormal Patients: {patient_ids[abnormal_flag]}")
     print(f"Abnormal Percentage: {pct:.2f}%")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 4: Max Glucose & Average
-# ─────────────────────────────────────────────────────
 def task_4_max_and_average():
-    """Identify patient with max glucose and compute average."""
     print("\n" + "=" * 60)
     print("  TASK 4: Max Glucose & Average")
     print("=" * 60)
@@ -100,12 +74,7 @@ def task_4_max_and_average():
           f"({glucose[max_idx]} mg/dL)")
     print(f"Average Glucose Reading: {avg:.2f} mg/dL")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 5: Range 140–180 & Urgent Attention (>180)
-# ─────────────────────────────────────────────────────
 def task_5_range_and_urgent():
-    """Identify patients with glucose between 140–180 and those requiring urgent attention."""
     print("\n" + "=" * 60)
     print("  TASK 5: Range 140–180 & Urgent Attention (>180)")
     print("=" * 60)
@@ -113,13 +82,11 @@ def task_5_range_and_urgent():
     glucose = np.array([110.0, 165.0, 185.5, 95.0, 150.0])
     patient_ids = np.array(["H101", "H102", "H103", "H104", "H105"])
 
-    # Vectorized condition for 140–180 range
     in_range_flag = (glucose >= 140) & (glucose <= 180)
     print("Patients with glucose 140–180 mg/dL:")
     for pid, g in zip(patient_ids[in_range_flag], glucose[in_range_flag]):
         print(f"  {pid}: {g} mg/dL")
 
-    # Urgent attention: > 180
     urgent_flag = glucose > 180
     num_urgent = int(np.sum(urgent_flag))
     urgent_pct = (num_urgent / len(glucose)) * 100
@@ -129,12 +96,7 @@ def task_5_range_and_urgent():
         print(f"  {pid}: {g} mg/dL")
     print(f"Urgent Attention Percentage: {urgent_pct:.2f}%")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 6: Loop vs Vectorized Comparison
-# ─────────────────────────────────────────────────────
 def task_6_loop_vs_vectorized():
-    """Generate random readings for N patients; compare loop vs vectorized."""
     print("\n" + "=" * 60)
     print("  TASK 6: Loop vs Vectorized Comparison")
     print("=" * 60)
@@ -145,13 +107,11 @@ def task_6_loop_vs_vectorized():
     glucose = np.random.uniform(60, 250, size=N)
     threshold = 140.0
 
-    # --- Python loop approach ---
     start = time.time()
     loop_result = [g > threshold for g in glucose]
     loop_count = sum(loop_result)
     loop_time = time.time() - start
 
-    # --- NumPy vectorized approach ---
     start = time.time()
     vec_result = glucose > threshold
     vec_count = int(np.sum(vec_result))
@@ -164,12 +124,7 @@ def task_6_loop_vs_vectorized():
     if vec_time > 0:
         print(f"Speedup: {loop_time / vec_time:.1f}x faster with NumPy")
 
-
-# ─────────────────────────────────────────────────────
-#  Task 7: Patient Classification
-# ─────────────────────────────────────────────────────
 def task_7_classification():
-    """Classify patients into Normal / Elevated / High-Glucose Urgent."""
     print("\n" + "=" * 60)
     print("  TASK 7: Patient Classification")
     print("=" * 60)
@@ -177,7 +132,6 @@ def task_7_classification():
     glucose = np.array([110.0, 165.0, 185.5, 95.0, 150.0])
     patient_ids = np.array(["H101", "H102", "H103", "H104", "H105"])
 
-    # Vectorized classification using nested np.where
     status = np.where(
         glucose <= 140, "Normal",
         np.where(glucose <= 180, "Elevated Glucose", "High Glucose - Urgent")
@@ -188,14 +142,7 @@ def task_7_classification():
     for pid, g, s in zip(patient_ids, glucose, status):
         print(f"{pid:<12s} {g:<18.1f} {s}")
 
-
-# ─────────────────────────────────────────────────────
-#  Run all tasks
-# ─────────────────────────────────────────────────────
 if __name__ == "__main__":
-    # Uncomment task_1 or task_3 to run (they require user input):
-    # task_1_user_input()
-    # task_3_user_threshold()
 
     task_2_fasting_status()
     task_4_max_and_average()

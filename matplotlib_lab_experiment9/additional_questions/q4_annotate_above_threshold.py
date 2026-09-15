@@ -1,9 +1,3 @@
-"""Additional Question 4: Annotate all glucose readings above 140 mg/dL.
-
-Every abnormal point (glucose > 140 mg/dL) is marked and annotated with its
-day and exact value on the trend graph.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -19,7 +13,6 @@ ax.plot(days, glucose, color="blue", marker="o", linewidth=2,
 ax.axhline(THRESHOLD, color="red", linestyle="--",
            label=f"Threshold ({THRESHOLD} mg/dL)")
 
-# Annotate every reading above the threshold
 for day, value in zip(days, glucose):
     if value > THRESHOLD:
         ax.annotate(f"{value} mg/dL (Day {day})",
@@ -32,7 +25,7 @@ ax.set_title("Glucose Readings Above 140 mg/dL (Annotated)", fontsize=13,
              fontweight="bold")
 ax.set_xlabel("Monitoring Period (Days)")
 ax.set_ylabel("Glucose Reading (mg/dL)")
-ax.set_ylim(min(glucose) - 20, max(glucose) + 35)  # room for annotations
+ax.set_ylim(min(glucose) - 20, max(glucose) + 35)
 ax.grid(alpha=0.4)
 ax.legend(loc="lower right")
 

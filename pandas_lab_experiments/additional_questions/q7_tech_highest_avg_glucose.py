@@ -1,5 +1,3 @@
-"""Additional Question 7: Technician with highest avg glucose"""
-
 import os
 import pandas as pd
 

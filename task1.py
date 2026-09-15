@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-# Build a student DataFrame from a dictionary of lists
 data = {
 " Name ": [" Aditi ", " Rohan ", " Priya ", "Lauki", "Yash","Om","Swarup","Naresh" ] ,
 " Branch ": [" CSE ", " ECE ", " MECH ", " CIVIL " , "EEE " , " CSE " , " ECE " , " MECH "] ,
@@ -10,8 +9,7 @@ data = {
 }
 df = pd.DataFrame(data)
 print(df)
-df= pd.DataFrame(df.describe())  # summary statistics become the new rows
+df= pd.DataFrame(df.describe())
 
-# Add eligibility flag based on CGPA using a vectorised condition
 df["Status"]=np.where(df[" CGPA "]>7.5,"Eligible","Not -Eligible")
 print(df)

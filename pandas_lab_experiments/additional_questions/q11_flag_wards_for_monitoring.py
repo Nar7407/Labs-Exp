@@ -1,5 +1,3 @@
-"""Additional Question 11: Flag wards for clinical monitoring"""
-
 import os
 import pandas as pd
 
@@ -65,11 +63,11 @@ if len(flagged_wards) > 0:
 else:
     print("\nNo wards meet both criteria for flagging.")
     print("\nNote: Some wards may meet individual criteria:")
-    
+
     high_glucose_wards = ward_stats[ward_stats["Avg_Glucose"] > 140]
     if len(high_glucose_wards) > 0:
         print(f"\n  Wards with high glucose (>140 mg/dL): {list(high_glucose_wards.index)}")
-    
+
     high_turnaround_wards = ward_stats[ward_stats["Avg_Turnaround"] > 50]
     if len(high_turnaround_wards) > 0:
         print(f"  Wards with long turnaround (>50 min): {list(high_turnaround_wards.index)}")

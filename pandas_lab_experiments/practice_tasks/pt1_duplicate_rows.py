@@ -1,5 +1,3 @@
-"""Practice Task 1: Find and remove duplicate rows"""
-
 import pandas as pd
 
 sample_data = """Product,Price,Stock

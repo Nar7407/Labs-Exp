@@ -1,5 +1,3 @@
-"""Additional Question 5: Glucose > 180 AND Turnaround > 50"""
-
 import os
 import pandas as pd
 

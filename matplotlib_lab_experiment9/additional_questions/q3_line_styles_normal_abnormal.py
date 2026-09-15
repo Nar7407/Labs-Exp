@@ -1,10 +1,3 @@
-"""Additional Question 3: Different line styles for normal vs abnormal regions.
-
-The glucose series is split into segments: solid green line where readings
-are normal (<= 140 mg/dL) and dashed red line where they are abnormal
-(> 140 mg/dL), so the two regions are visually distinct.
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -16,7 +9,6 @@ glucose = np.array([110, 125, 138, 152, 168, 180, 160, 145, 130])
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
-# Mask the series so each style is drawn only in its own region
 normal_days = np.where(glucose <= THRESHOLD, days, np.nan)
 abnormal_days = np.where(glucose > THRESHOLD, days, np.nan)
 normal_values = np.where(glucose <= THRESHOLD, glucose, np.nan)

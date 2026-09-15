@@ -1,49 +1,22 @@
-"""AI Case Study: Patient Test-Result Visualization using Matplotlib.
-
-Part A - Glucose Trend of a Sample Patient
-  Task 1: Line plot of glucose readings across the monitoring period
-          (title, axis labels, grid, markers, legend).
-  Task 2: 140 mg/dL abnormality threshold line + shaded abnormal-glucose
-          periods (glucose > 140 mg/dL).
-  Task 3: Identify the maximum glucose reading and the day it occurred,
-          and annotate it on the graph.
-
-Part B - Ward-Wise Glucose-Abnormality Heat Map
-  Task 4: Heat map of the abnormality index with colour bar.
-  Task 5: Numerical value displayed inside every heat-map cell.
-  Task 6: Identify the most abnormal ward section (max value, its row/column
-          position and its classification status).
-
-Abnormality classification:
-    AI < 30            -> Low Abnormality
-    30 <= AI < 50      -> Moderate Abnormality
-    50 <= AI < 70      -> High Abnormality
-    AI >= 70           -> Severe Abnormality
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-# ================================= Part A =================================
 days = np.array([0, 3, 6, 9, 12, 15, 18, 21, 24])
 glucose = np.array([110, 125, 138, 152, 168, 180, 160, 145, 130])
-THRESHOLD = 140  # mg/dL
+THRESHOLD = 140
 
-# ---- Task 1: line plot with grid, markers, legend -------------------------
 fig1, ax1 = plt.subplots(figsize=(10, 6))
 ax1.plot(days, glucose, color="blue", marker="o", linestyle="-",
          linewidth=2, label="Glucose Reading")
 
-# ---- Task 2: abnormality threshold + abnormal periods ---------------------
 ax1.axhline(THRESHOLD, color="red", linestyle="--", linewidth=1.5,
             label=f"Abnormality Threshold ({THRESHOLD} mg/dL)")
 ax1.fill_between(days, glucose, THRESHOLD, where=(glucose > THRESHOLD),
                  color="red", alpha=0.25, interpolate=True,
                  label="Abnormal-glucose period (> 140 mg/dL)")
 
-# ---- Task 3: annotate the maximum reading ---------------------------------
 max_idx = np.argmax(glucose)
 max_value = glucose[max_idx]
 max_day = days[max_idx]
@@ -66,7 +39,6 @@ print("Saved glucose_trend.png")
 print(f"Maximum glucose reading : {max_value} mg/dL")
 print(f"Day of maximum reading  : Day {max_day}")
 
-# ================================= Part B =================================
 abnormality = np.array([
     [20, 35, 45, 60, 30],
     [25, 40, 55, 65, 35],
@@ -74,7 +46,6 @@ abnormality = np.array([
     [30, 45, 60, 75, 40],
 ])
 
-# ---- Task 4 & 5: heat map with values inside cells ------------------------
 fig2, ax2 = plt.subplots(figsize=(9, 6))
 heat = ax2.imshow(abnormality, cmap="YlOrRd", aspect="auto")
 cbar = plt.colorbar(heat, ax=ax2)
@@ -96,9 +67,7 @@ for r in range(abnormality.shape[0]):
         ax2.text(c, r, str(value), ha="center", va="center",
                  color=text_color, fontweight="bold")
 
-# ---- Task 6: most abnormal ward section -----------------------------------
 def classify(ai):
-    """Classify an abnormality index value."""
     if ai < 30:
         return "Low Abnormality"
     if ai < 50:

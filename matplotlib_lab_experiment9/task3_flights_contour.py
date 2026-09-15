@@ -1,10 +1,3 @@
-"""Experiment 9 - Task 3: Contour Visualization of Real Seasonal Data.
-
-Pivots the Flights dataset into a Year x Month matrix of passenger counts and
-plots it as a filled contour plot with a colorbar, showing the seasonal peak
-months and year-over-year growth in real historical data (1949-1960).
-"""
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -16,7 +9,6 @@ URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv
 flights = pd.read_csv(URL)
 print(f"Loaded Flights dataset: {flights.shape[0]} rows")
 
-# Pivot: rows = month (calendar order), columns = year, values = passengers
 month_order = ["January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"]
 pivot = flights.pivot(index="month", columns="year", values="passengers")
@@ -44,7 +36,6 @@ plt.savefig("flights_seasonal_contour.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved flights_seasonal_contour.png")
 
-# Quick interpretation helpers
 peak_cell = np.unravel_index(np.nanargmax(Z), Z.shape)
 print(f"\nPeak traffic: {Z[peak_cell]:.0f} passengers in {month_order[peak_cell[0]]} {pivot.columns[peak_cell[1]]}")
 print("Observation: traffic grows year over year and peaks every year in July-August (summer holidays).")

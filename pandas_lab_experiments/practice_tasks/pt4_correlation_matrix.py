@@ -1,5 +1,3 @@
-"""Practice Task 4: Compute correlation matrix and find most correlated columns"""
-
 import pandas as pd
 import numpy as np
 
@@ -110,7 +108,7 @@ Correlation Coefficient Interpretation:
 
 Strongest correlation in this dataset:
   {col1} and {col2} have a correlation of {max_corr:.4f}
-  This means as {col1.lower()} increases, {col2.lower()} tends to 
+  This means as {col1.lower()} increases, {col2.lower()} tends to
   {'increase' if max_corr > 0 else 'decrease'} as well.
 """)
 
