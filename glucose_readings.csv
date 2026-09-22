@@ -1,0 +1,10 @@
+Monitoring Day,Phase,Glucose Reading (mg/dL),Protein Reading (mg/dL)
+0,Baseline,108,12
+3,Baseline,122,14
+6,Rising,138,18
+9,Rising,151,24
+12,Peak,166,30
+15,Peak,182,34
+18,Peak,158,26
+21,Recovery,144,20
+24,Recovery,128,15
