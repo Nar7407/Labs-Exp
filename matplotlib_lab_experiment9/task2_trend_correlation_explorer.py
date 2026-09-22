@@ -1,12 +1,22 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-FLIGHTS_URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv"
-MPG_URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv"
+DATA_DIR = LAB9_DIR / "datasets"
+FLIGHTS_CSV = DATA_DIR / "flights.csv"
+MPG_CSV = DATA_DIR / "mpg.csv"
 
-flights = pd.read_csv(FLIGHTS_URL)
+flights = pd.read_csv(FLIGHTS_CSV)
 print(f"Loaded Flights dataset: {flights.shape[0]} rows")
 passengers_per_year = flights.groupby("year")["passengers"].sum()
 years = passengers_per_year.index
@@ -41,11 +51,11 @@ axes[1].legend()
 axes[1].grid(alpha=0.3)
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig("flights_trend_area.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "flights_trend_area.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved flights_trend_area.png")
 
-mpg = pd.read_csv(MPG_URL)
+mpg = pd.read_csv(MPG_CSV)
 mpg = mpg.dropna(subset=["horsepower"])
 print(f"\nLoaded Auto MPG dataset: {mpg.shape[0]} rows (after dropping missing horsepower)")
 
@@ -60,6 +70,6 @@ ax.set_ylabel("Miles Per Gallon (MPG)")
 ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("mpg_horsepower_scatter.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "mpg_horsepower_scatter.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved mpg_horsepower_scatter.png")

@@ -1,12 +1,22 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
+DATA_DIR = LAB9_DIR / "datasets"
+TIPS_CSV = DATA_DIR / "tips.csv"
 
-tips = pd.read_csv(URL)
+tips = pd.read_csv(TIPS_CSV)
 print(f"Loaded Tips dataset: {tips.shape[0]} rows x {tips.shape[1]} columns")
 print(tips.head(), "\n")
 
@@ -53,6 +63,6 @@ parts_legend = [plt.Line2D([0], [0], color="steelblue", lw=6, alpha=0.6, label="
 axes[1, 1].legend(handles=parts_legend, loc="upper right")
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig("tips_dashboard.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "tips_dashboard.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved tips_dashboard.png")

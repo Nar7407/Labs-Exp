@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,6 +36,6 @@ ax.legend(loc="upper left")
 ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("practice3_stacked_area_sales.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "practice3_stacked_area_sales.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved practice3_stacked_area_sales.png")

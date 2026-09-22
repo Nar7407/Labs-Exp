@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -50,6 +59,6 @@ for r in range(abnormality.shape[0]):
                      color=color, fontweight="bold")
 
 plt.tight_layout(rect=[0, 0, 1, 0.93])
-plt.savefig("q11_dashboard_subplot.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "q11_dashboard_subplot.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved q11_dashboard_subplot.png")

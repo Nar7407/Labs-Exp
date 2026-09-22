@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,7 +45,7 @@ ax1.grid(alpha=0.4)
 ax1.legend()
 
 plt.tight_layout()
-plt.savefig("q13_multi_patient_comparison.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "q13_multi_patient_comparison.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved q13_multi_patient_comparison.png")
 
@@ -56,6 +65,6 @@ ax2.set_ylabel("Average Glucose (mg/dL)")
 ax2.legend()
 
 plt.tight_layout()
-plt.savefig("q13_avg_glucose_per_patient.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "q13_avg_glucose_per_patient.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved q13_avg_glucose_per_patient.png")

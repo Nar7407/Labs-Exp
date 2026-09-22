@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,7 +29,7 @@ ax1.set_xlabel("X")
 ax1.set_ylabel("Y")
 
 plt.tight_layout()
-plt.savefig("saddle_contour.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "saddle_contour.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved saddle_contour.png")
 
@@ -38,7 +47,7 @@ ax2.set_ylabel("Y")
 ax2.set_aspect("equal")
 
 plt.tight_layout()
-plt.savefig("saddle_gradient_quiver.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "saddle_gradient_quiver.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved saddle_gradient_quiver.png")
 
