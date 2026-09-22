@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -39,7 +48,7 @@ def plot_glucose_trend(days, glucose):
     ax.legend(loc="lower right")
 
     plt.tight_layout()
-    plt.savefig("glucose_trend.png", dpi=150, bbox_inches="tight")
+    plt.savefig(OUTPUT_DIR / "glucose_trend.png", dpi=150, bbox_inches="tight")
     plt.show()
     plt.close(fig)
     print("Saved glucose_trend.png")
@@ -85,7 +94,7 @@ def plot_ward_heatmap(abnormality):
     print("=" * 50)
 
     plt.tight_layout()
-    plt.savefig("ward_abnormality_heatmap.png", dpi=150, bbox_inches="tight")
+    plt.savefig(OUTPUT_DIR / "ward_abnormality_heatmap.png", dpi=150, bbox_inches="tight")
     plt.show()
     plt.close(fig)
     print("Saved ward_abnormality_heatmap.png")

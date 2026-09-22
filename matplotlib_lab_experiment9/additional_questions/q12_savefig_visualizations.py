@@ -1,4 +1,13 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,7 +31,7 @@ ax1.set_ylabel("Glucose Reading (mg/dL)")
 ax1.grid(alpha=0.4)
 ax1.legend()
 
-plt.savefig("q12_glucose_trend_150dpi.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "q12_glucose_trend_150dpi.png", dpi=150, bbox_inches="tight")
 plt.savefig("q12_glucose_trend.pdf", bbox_inches="tight")
 plt.savefig("q12_glucose_trend.svg", bbox_inches="tight")
 plt.close(fig1)
@@ -34,7 +43,7 @@ plt.colorbar(heat, ax=ax2, label="Glucose-Abnormality Index")
 ax2.set_title("Ward-Wise Glucose-Abnormality Heat Map")
 ax2.set_xlabel("Ward-Section Column")
 ax2.set_ylabel("Ward-Section Row")
-plt.savefig("q12_heatmap_300dpi.png", dpi=300, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "q12_heatmap_300dpi.png", dpi=300, bbox_inches="tight")
 plt.close(fig2)
 print("Saved q12_heatmap_300dpi.png")
 

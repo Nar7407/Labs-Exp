@@ -1,12 +1,22 @@
 import matplotlib
+
+from pathlib import Path
+
+SCRIPT_PATH = Path(__file__).resolve()
+LAB9_DIR = next(parent for parent in [SCRIPT_PATH.parent, *SCRIPT_PATH.parents]
+                if parent.name == "matplotlib_lab_experiment9")
+OUTPUT_DIR = LAB9_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv"
+DATA_DIR = LAB9_DIR / "datasets"
+FLIGHTS_CSV = DATA_DIR / "flights.csv"
 
-flights = pd.read_csv(URL)
+flights = pd.read_csv(FLIGHTS_CSV)
 print(f"Loaded Flights dataset: {flights.shape[0]} rows")
 
 month_order = ["January", "February", "March", "April", "May", "June",
@@ -32,7 +42,7 @@ ax.set_yticks(np.arange(len(month_order)))
 ax.set_yticklabels(month_order)
 
 plt.tight_layout()
-plt.savefig("flights_seasonal_contour.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT_DIR / "flights_seasonal_contour.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Saved flights_seasonal_contour.png")
 
